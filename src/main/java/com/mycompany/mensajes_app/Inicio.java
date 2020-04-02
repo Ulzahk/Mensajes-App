@@ -55,16 +55,16 @@ public class Inicio {
 
             switch (opcion) {
                 case 1:
-                    MensajesService.crearMensaje();
+                    MensajesService.crearMensaje(usuario);
                     break;
                 case 2:
                     MensajesService.listarMensajes();
                     break;
                 case 3:
-                    MensajesService.borrarMensaje();
+                    MensajesService.borrarMensaje(usuario);
                     break;
                 case 4:
-                    UsuariosService.editarUsuario();
+                    UsuariosService.editarUsuario(usuario);
                     break;
                 case 5:
                     UsuariosService.listarUsuarios();
