@@ -5,20 +5,14 @@ import java.util.Scanner;
 
 public class MensajesService {
     
-        static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     
-    public static void crearMensaje(){
+    public static void crearMensaje(Usuarios usuario){
         
         System.out.println("Escribe tu mensaje");
-        String mensaje = sc.nextLine();
-        
-        System.out.println("Tu nombre");
-        String nombre = sc.nextLine();
-        
-        Mensajes registro = new Mensajes();
-        registro.setMensaje(mensaje);
-        registro.setAutor_mensaje(nombre);
-        MensajesDAO.crearMensajeBD(registro);
+        String mensajeTexto = sc.nextLine();
+        Mensajes mensaje = new Mensajes(mensajeTexto, usuario.getIdUsuario());
+        MensajesDAO.crearMensajeBD(mensaje);
     }
     
     public static void listarMensajes(){
@@ -28,20 +22,8 @@ public class MensajesService {
     public static void borrarMensaje(){
         System.out.println("Indica el ID del mensaje a borrar");
         int id_mensaje = sc.nextInt();
-        
-        MensajesDAO.borrarMensajeDB(id_mensaje);
+        Mensajes mensaje = new Mensajes(id_mensaje, usuario.getIdUsuario());
+        MensajesDAO.borrarMensajeDB(mensaje);
     }
     
-    public static void editarMensaje(){
-        System.out.println("Escribe tu nuevo mensaje");
-        String mensaje = sc.nextLine();
-        
-        System.out.println("Indica el ID del mensaje a editar");
-        int id_mensaje = sc.nextInt();
-        
-        Mensajes actualizacion = new Mensajes();
-        actualizacion.setMensaje(mensaje);
-        actualizacion.setId_mensaje(id_mensaje);
-        MensajesDAO.actualizarMensajeBD(actualizacion);
-    }
 }
