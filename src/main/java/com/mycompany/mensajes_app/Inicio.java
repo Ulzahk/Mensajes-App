@@ -1,6 +1,5 @@
 package com.mycompany.mensajes_app;
 
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class Inicio {
@@ -14,8 +13,8 @@ public class Inicio {
             System.out.println(" Aplicación de Mensajes");
             System.out.println(" 1. Crear un Mensaje");
             System.out.println(" 2. Listar Mensajes");
-            System.out.println(" 3. Editar Mensaje");
-            System.out.println(" 4. Eliminar Mensaje");
+            System.out.println(" 3. Eliminar Mensaje");
+            System.out.println(" 4. Editar Mensaje");
             System.out.println(" 5. Salir"); 
             //Leemos la opción del usuario
             opcion = sc.nextInt();
@@ -38,7 +37,5 @@ public class Inicio {
                     break;
             }
         } while (opcion != 5);
-        Conexion conexion = new Conexion();
-        
     }
 }
