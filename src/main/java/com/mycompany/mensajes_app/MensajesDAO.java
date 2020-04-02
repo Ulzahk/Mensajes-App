@@ -15,7 +15,7 @@ public class MensajesDAO {
 
         try ( Connection conexion = dbConnect.getConnection()) {
 
-            String query = "INSERT INTO mensajes (id_usuario, mensaje, autor_mensaje) VALUES (?, ?, CURRENT_TIMESTAMP)";
+            String query = "INSERT INTO mensajes (id_usuario, mensaje, fecha_mensaje) VALUES (?, ?, CURRENT_TIMESTAMP)";
             ps = conexion.prepareStatement(query);
             ps.setInt(1, mensaje.getId_usuario());
             ps.setString(2, mensaje.getMensaje());
@@ -35,15 +35,14 @@ public class MensajesDAO {
 
         try ( Connection conexion = dbConnect.getConnection()) {
 
-            String query = "SELECT m.id_mensaje, m.mensaje, m.fecha, u.nombre_completo from mensajes m"
-                    + "JOIN usuarios u ON m.id_usuario = u.id_usuario";
+            String query = "SELECT m.id_mensaje, m.mensaje, m.fecha_mensaje, u.nombre_completo FROM mensajes m JOIN usuarios u ON m.id_usuario = u.id_usuario";
             ps = conexion.prepareStatement(query);
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 System.out.print("\n[ID: " + rs.getInt("id_mensaje")+ " | ");
                 System.out.print("Mensaje: " + rs.getString("mensaje") + " | ");
-                System.out.print("Fecha:" + rs.getString("fecha") + " | ");
+                System.out.print("Fecha:" + rs.getString("fecha_mensaje") + " | ");
                 System.out.print("Autor:" + rs.getString("nombre_completo") + " ] ");
                 System.out.println("");
             }
